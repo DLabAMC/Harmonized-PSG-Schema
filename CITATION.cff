@@ -1,0 +1,62 @@
+cff-version: 1.2.0
+message: "If you use the harmonized PSG schema or harmonization examples, please cite:"
+title: "Harmonized PSG Schema"
+version: 1.0.0
+date-released: "2026-06-25"
+authors:
+  - given-names: Yujin
+    family-names: Han
+    affiliation:
+      - "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea"
+      - "Department of Medical Science, Graduate School, University of Ulsan, Seoul, Republic of Korea"
+  - given-names: Gayeon
+    family-names: Ryu
+    affiliation:
+      - "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea"
+      - "Department of Medical Science, Graduate School, University of Ulsan, Seoul, Republic of Korea"
+  - given-names: Yeongdon
+    family-names: Kim
+    affiliation: "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea"
+  - given-names: Hangsik
+    family-names: Shin
+    affiliation:
+      - "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea"
+      - "Department of Medical Science, Graduate School, University of Ulsan, Seoul, Republic of Korea"
+      - "Institute of Digital Healthcare, University of Ulsan College of Medicine, Seoul, Republic of Korea"
+contact:
+  - given-names: Hangsik
+    family-names: Shin
+    affiliation: "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea"
+repository-code: "https://github.com/Hanflower/Harmonized-PSG-Schema"
+url: "https://github.com/Hanflower/Harmonized-PSG-Schema"
+license: Apache-2.0
+abstract: >
+  Harmonized schema and Python examples for polysomnography (PSG) data across
+  eight publicly available cohorts, covering biosignals, sleep analysis
+  parameters, and demographic characteristics, with mapping workbooks and
+  harmonization scripts for European Data Format (EDF) and tabular exports.
+keywords:
+  - polysomnography
+  - sleep
+  - harmonization
+  - schema
+  - biosignals
+  - sleep staging
+  - NSRR
+funding:
+  - "Ministry of Food and Drug Safety, Republic of Korea (RS-2023-00215716)"
+preferred-citation:
+  type: software
+  title: "Harmonized PSG Schema"
+  authors:
+    - given-names: Yujin
+      family-names: Han
+    - given-names: Gayeon
+      family-names: Ryu
+    - given-names: Yeongdon
+      family-names: Kim
+    - given-names: Hangsik
+      family-names: Shin
+  year: 2026
+  version: 1.0.0
+  url: "https://github.com/Hanflower/Harmonized-PSG-Schema"

@@ -1,0 +1,91 @@
+"""Load biosignal channel mappings from harmonized/Biosignal_schema.xlsx."""
+
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Mapping
+
+import pandas as pd
+
+HARMONIZED_COL = "Harmonized Name"
+TARGET_RATE_COL = "Harmonization target rate (Hz)"
+
+DATASET_KEYS = ("abc", "apple", "cfs", "mesa", "mros", "shhs", "sof", "wsc")
+SCHEMA_COLUMNS = {
+    "abc": "ABC",
+    "apple": "APPLE",
+    "cfs": "CFS",
+    "mesa": "MESA",
+    "mros": "MrOS",
+    "shhs": "SHHS",
+    "sof": "SOF",
+    "wsc": "WSC",
+}
+
+_AIRFLOW_PRIMARY_LABELS = frozenset({"NEW AIR", "NEWAIR"})
+_AIRFLOW_ALTERNATE_LABEL = "AIRFLOW"
+
+
+def load_biosignal_schema(schema_path: Path) -> pd.DataFrame:
+    path = Path(schema_path)
+    if not path.is_file():
+        raise FileNotFoundError(f"Biosignal schema not found: {path}")
+    return pd.read_excel(path)
+
+
+def build_biosignal_mappings(
+    schema_df: pd.DataFrame,
+    dataset: str,
+) -> dict[str, dict[str, object]]:
+    """
+    Build original EDF label -> {new_rate, new_name} for one cohort.
+
+    Multiple original labels (comma-separated in the schema) may map to the
+    same harmonized name; the transform step keeps the first matching channel
+    in the source EDF.
+    """
+    key = dataset.lower()
+    if key not in SCHEMA_COLUMNS:
+        raise KeyError(f"Unknown dataset '{dataset}'. Expected one of {DATASET_KEYS}")
+    column = SCHEMA_COLUMNS[key]
+
+    mappings: dict[str, dict[str, object]] = {}
+    for _, row in schema_df.iterrows():
+        harm = row.get(HARMONIZED_COL)
+        rate = row.get(TARGET_RATE_COL)
+        raw = row.get(column)
+        if pd.isna(harm) or pd.isna(rate) or pd.isna(raw):
+            continue
+
+        harm_name = str(harm).strip()
+        target_rate = int(rate)
+        for part in str(raw).split(","):
+            label = part.strip()
+            if label:
+                mappings[label] = {"new_rate": target_rate, "new_name": harm_name}
+    return mappings
+
+
+def build_name_map(signals: Mapping[str, Mapping[str, object]]) -> dict[str, str]:
+    return {label: str(spec["new_name"]) for label, spec in signals.items()}
+
+
+def resolve_signals_for_file(
+    labels: list[str] | tuple[str, ...],
+    signals_to_modify: Mapping[str, Mapping[str, object]],
+) -> dict[str, dict]:
+    """SHHS: when NEW AIR and AIRFLOW coexist, keep primary airflow mapping only."""
+    out = dict(signals_to_modify)
+    label_set = {lbl.strip() for lbl in labels}
+    has_primary = bool(label_set & _AIRFLOW_PRIMARY_LABELS)
+    alt = _AIRFLOW_ALTERNATE_LABEL
+    if not has_primary or alt not in label_set or alt not in out:
+        return out
+    primary_name = None
+    for pl in _AIRFLOW_PRIMARY_LABELS:
+        if pl in out:
+            primary_name = out[pl].get("new_name")
+            break
+    if primary_name and out[alt].get("new_name") == primary_name:
+        del out[alt]
+    return out

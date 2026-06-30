@@ -1,0 +1,60 @@
+# Reference: typical CSV exports from NSRR (https://sleepdata.org/)
+#
+# Version suffixes (e.g. 0.4.0) change over time — use the files from your download.
+# This repo does not host NSRR data. Filenames below are examples only.
+#
+# Standard cohorts: one *-harmonized-*.csv + one *-dataset-*.csv per study export.
+# SHHS / MrOS: multiple dataset CSVs or key-based merges — see merge_notes.
+
+abc:
+  harmonized_csv_example: abc-baseline-harmonized-0.4.0.csv
+  dataset_csv_example: abc-baseline-dataset-0.4.0.csv
+  merge: concat_axis1
+
+apple:
+  harmonized_csv_example: apples-harmonized-dataset-0.1.0.csv
+  dataset_csv_example: apples-dataset-0.1.0.csv
+  merge: concat_axis1
+
+cfs:
+  harmonized_csv_example: cfs-visit5-harmonized-dataset-0.7.0.csv
+  dataset_csv_example: cfs-visit5-dataset-0.7.0.csv
+  merge: concat_axis1
+
+mesa:
+  harmonized_csv_example: mesa-sleep-harmonized-dataset-0.7.0.csv
+  dataset_csv_example: mesa-sleep-dataset-0.7.0.csv
+  merge: concat_axis1
+
+sof:
+  harmonized_csv_example: sof-visit-8-harmonized-dataset-0.8.0.csv
+  dataset_csv_example: sof-visit-8-dataset-0.8.0.csv
+  merge: concat_axis1
+
+wsc:
+  harmonized_csv_example: wsc-harmonized-dataset-0.6.0.csv
+  dataset_csv_example: wsc-dataset-0.6.0.csv
+  merge: concat_axis1
+
+shhs:
+  harmonized_csv_example: shhs-harmonized-dataset-0.20.0.csv
+  dataset_csv_examples:
+    - shhs1-dataset-0.20.0.csv
+    - shhs2-dataset-0.20.0.csv
+  merge: merge_on_keys
+  merge_keys: [nsrrid, visitnumber]
+  merge_notes: >
+    Stack shhs1 and shhs2 dataset CSVs (set visitnumber 1 and 2), then merge with
+    the harmonized CSV on nsrrid and visitnumber. Create weight_all / height_all
+    before harmonization (see examples/README.md).
+
+mros:
+  harmonized_csv_example: mros-visit1-harmonized-0.6.0.csv
+  dataset_csv_examples:
+    - mros-visit1-dataset-0.6.0.csv
+    - mros-visit2-dataset-0.6.0.csv
+  merge: merge_on_keys
+  merge_keys: [nsrrid, visit]
+  merge_notes: >
+    Stack visit1 and visit2 dataset CSVs, then merge with visit1 harmonized CSV on
+    nsrrid and visit. Additional visit-2 cleaning may be required (see internal notes).

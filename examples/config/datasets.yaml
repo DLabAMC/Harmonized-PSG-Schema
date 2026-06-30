@@ -1,0 +1,96 @@
+# Per-cohort column names in the *merged* wide CSV (after NSRR harmonized + dataset merge).
+# Keys match run_harmonize_example.py --dataset (abc, apple, cfs, mesa, shhs, sof, wsc, mros).
+# Sleep parameters: harmonized/Sleep_schema.xlsx
+# Example NSRR export names: config/nsrr_csv_sources.yaml
+
+abc:
+  db_name: abc
+  edf_path_column: edf_path
+  subject_id_column: nsrrid
+  visit_column: visitnumber
+  age_column: nsrr_age
+  sex_column: nsrr_sex
+  weight_column: weight
+  height_column: height
+  bmi_column: nsrr_bmi
+
+apple:
+  db_name: apple
+  edf_path_column: fileid
+  subject_id_column: nsrrid
+  visit_column: visitn
+  age_column: age_at_enrollment
+  sex_column: nsrr_sex
+  weight_column: weight
+  height_column: height
+  bmi_column: nsrr_bmi
+  fill_visit_level_demographics: true
+  height_inches_to_cm: true
+  weight_pounds_to_kg: true
+
+cfs:
+  db_name: cfs
+  edf_path_column: edf_path
+  subject_id_column: nsrrid
+  visit_column: rectype
+  age_column: nsrr_age
+  sex_column: nsrr_sex
+  weight_column: wtkg
+  height_column: htcm
+  bmi_column: nsrr_bmi
+
+mesa:
+  db_name: mesa
+  edf_path_column: edf_path
+  subject_id_column: mesaid
+  visit_column: ""
+  age_column: nsrr_age
+  sex_column: nsrr_sex
+  weight_column: wtlb5
+  height_column: htcm5
+  bmi_column: nsrr_bmi
+  weight_pounds_to_kg: true
+
+shhs:
+  db_name: shhs
+  edf_path_column: edf_path
+  subject_id_column: nsrrid
+  visit_column: visitnumber
+  age_column: nsrr_age
+  sex_column: nsrr_sex
+  weight_column: weight_all
+  height_column: height_all
+  bmi_column: nsrr_bmi
+
+sof:
+  db_name: sof
+  edf_path_column: edf_path
+  subject_id_column: nsrrid
+  visit_column: visit
+  age_column: nsrr_age
+  sex_column: nsrr_sex
+  weight_column: v8wght
+  height_column: v8hght
+  bmi_column: nsrr_bmi
+
+wsc:
+  db_name: wsc
+  edf_path_column: edf_path
+  subject_id_column: wsc_id
+  visit_column: wsc_vst
+  age_column: nsrr_age
+  sex_column: nsrr_sex
+  weight_column: weightkg
+  height_column: heightcm
+  bmi_column: nsrr_bmi
+
+mros:
+  db_name: mros
+  edf_path_column: edf_path
+  subject_id_column: nsrrid
+  visit_column: visit
+  age_column: nsrr_age
+  sex_column: nsrr_sex
+  weight_column: hwwgt
+  height_column: hwhgt
+  bmi_column: nsrr_bmi
