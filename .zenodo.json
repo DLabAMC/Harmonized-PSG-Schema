@@ -1,0 +1,42 @@
+{
+  "title": "Polysomnography Harmonization Schemes: A Multi-Institutional Sleep Research Resource",
+  "description": "This repository contains the proposed schemas and example files for polysomnography data harmonization. The schemas organize heterogeneous biosignals, derived sleep parameters, and demographic features to support harmonization across datasets.",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "Apache-2.0",
+  "creators": [
+    {
+      "name": "Han, Yujin",
+      "affiliation": "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea; Department of Medical Science, Graduate School, University of Ulsan, Seoul, Republic of Korea",
+      "orcid": "0009-0004-5239-1098"
+    },
+    {
+      "name": "Ryu, Gayeon",
+      "affiliation": "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea; Department of Medical Science, Graduate School, University of Ulsan, Seoul, Republic of Korea",
+      "orcid": "0009-0004-5396-6033"
+    },
+    {
+      "name": "Kim, Yeongdon",
+      "affiliation": "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea",
+      "orcid": "0009-0004-7687-1459"
+    },
+    {
+      "name": "Shin, Hangsik",
+      "affiliation": "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea; Department of Medical Science, Graduate School, University of Ulsan, Seoul, Republic of Korea; Institute of Digital Healthcare, University of Ulsan College of Medicine, Seoul, Republic of Korea",
+      "orcid": "0000-0002-3353-0310"
+    }
+  ],
+  "keywords": [
+    "Polysomnography",
+    "Harmonization schemes",
+    "Multi-institutional sleep research",
+    "Data integration",
+    "reproducibility",
+    "open data",
+    "EEG",
+    "EOG",
+    "EMG",
+    "ECG"
+  ],
+  "language": "eng"
+}
