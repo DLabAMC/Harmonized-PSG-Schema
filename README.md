@@ -145,7 +145,6 @@ This repository is licensed under the [Apache License 2.0](./LICENSE).
 
 ```text
 Han, Y., Ryu, G., Kim, Y., & Shin, H. (2026). Harmonized PSG Schema (Version 1.0.0) [Computer software].
-https://github.com/DLabAMC/Harmonized-PSG-Schema
 ```
 
 ## Acknowledgements
