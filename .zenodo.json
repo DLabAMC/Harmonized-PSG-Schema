@@ -7,22 +7,22 @@
   "creators": [
     {
       "name": "Han, Yujin",
-      "affiliation": "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea; Department of Medical Science, Graduate School, University of Ulsan, Seoul, Republic of Korea",
+      "affiliation": ,
       "orcid": "0009-0004-5239-1098"
     },
     {
       "name": "Ryu, Gayeon",
-      "affiliation": "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea; Department of Medical Science, Graduate School, University of Ulsan, Seoul, Republic of Korea",
+      "affiliation": ,
       "orcid": "0009-0004-5396-6033"
     },
     {
       "name": "Kim, Yeongdon",
-      "affiliation": "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea",
+      "affiliation": ,
       "orcid": "0009-0004-7687-1459"
     },
     {
       "name": "Shin, Hangsik",
-      "affiliation": "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea; Department of Medical Science, Graduate School, University of Ulsan, Seoul, Republic of Korea; Institute of Digital Healthcare, University of Ulsan College of Medicine, Seoul, Republic of Korea",
+      "affiliation": ,
       "orcid": "0000-0002-3353-0310"
     }
   ],
@@ -32,7 +32,6 @@
     "Multi-institutional sleep research",
     "Data integration",
     "reproducibility",
-    "open data",
     "EEG",
     "EOG",
     "EMG",
