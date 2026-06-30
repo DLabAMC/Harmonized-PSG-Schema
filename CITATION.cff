@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use the harmonized PSG schema or harmonization examples, please cite:"
 title: "Harmonized PSG Schema"
 version: 1.0.0
-date-released: "2026-06-25"
+date-released: "2026-06-30"
 authors:
   - given-names: Yujin
     family-names: Han
@@ -27,8 +27,8 @@ contact:
   - given-names: Hangsik
     family-names: Shin
     affiliation: "Department of Medical Informatics and Statistics, Brain Korea 21 Project, Asan Medical Center, University of Ulsan College of Medicine, Seoul, Republic of Korea"
-repository-code: "https://github.com/Hanflower/Harmonized-PSG-Schema"
-url: "https://github.com/Hanflower/Harmonized-PSG-Schema"
+repository-code: ""https://github.com/DLabAMC/Harmonized-PSG-Schema""
+url: ""https://github.com/DLabAMC/Harmonized-PSG-Schema""
 license: Apache-2.0
 abstract: >
   Harmonized schema and Python examples for polysomnography (PSG) data across
@@ -59,4 +59,3 @@ preferred-citation:
       family-names: Shin
   year: 2026
   version: 1.0.0
-  url: 
