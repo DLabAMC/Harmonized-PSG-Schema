@@ -8,7 +8,8 @@ from typing import Mapping
 import pandas as pd
 
 HARMONIZED_COL = "Harmonized Name"
-TARGET_RATE_COL = "Harmonization target rate (Hz)"
+HARMONIZATION_SAMPLING_RATE_COL = "Harmonization sampling rate (Hz)"
+_LEGACY_HARMONIZATION_SAMPLING_RATE_COL = "Harmonization target rate (Hz)"
 
 DATASET_KEYS = ("abc", "apple", "cfs", "mesa", "mros", "shhs", "sof", "wsc")
 SCHEMA_COLUMNS = {
@@ -33,6 +34,21 @@ def load_biosignal_schema(schema_path: Path) -> pd.DataFrame:
     return pd.read_excel(path)
 
 
+def _sampling_rate_column(schema_df: pd.DataFrame) -> str:
+    for col in (
+        HARMONIZATION_SAMPLING_RATE_COL,
+        _LEGACY_HARMONIZATION_SAMPLING_RATE_COL,
+    ):
+        if col in schema_df.columns:
+            return col
+    raise KeyError(
+        "Biosignal schema must include a harmonization sampling rate column "
+        f"({HARMONIZATION_SAMPLING_RATE_COL!r} or "
+        f"{_LEGACY_HARMONIZATION_SAMPLING_RATE_COL!r}). "
+        f"Found columns: {list(schema_df.columns)}"
+    )
+
+
 def build_biosignal_mappings(
     schema_df: pd.DataFrame,
     dataset: str,
@@ -48,21 +64,35 @@ def build_biosignal_mappings(
     if key not in SCHEMA_COLUMNS:
         raise KeyError(f"Unknown dataset '{dataset}'. Expected one of {DATASET_KEYS}")
     column = SCHEMA_COLUMNS[key]
+    if column not in schema_df.columns:
+        raise KeyError(
+            f"Biosignal schema is missing cohort column {column!r} for dataset {dataset!r}. "
+            f"Found columns: {list(schema_df.columns)}"
+        )
+    if HARMONIZED_COL not in schema_df.columns:
+        raise KeyError(
+            f"Biosignal schema is missing {HARMONIZED_COL!r}. "
+            f"Found columns: {list(schema_df.columns)}"
+        )
+    rate_col = _sampling_rate_column(schema_df)
 
     mappings: dict[str, dict[str, object]] = {}
     for _, row in schema_df.iterrows():
         harm = row.get(HARMONIZED_COL)
-        rate = row.get(TARGET_RATE_COL)
+        rate = row.get(rate_col)
         raw = row.get(column)
         if pd.isna(harm) or pd.isna(rate) or pd.isna(raw):
             continue
 
         harm_name = str(harm).strip()
-        target_rate = int(rate)
+        harmonization_sampling_rate = int(rate)
         for part in str(raw).split(","):
             label = part.strip()
             if label:
-                mappings[label] = {"new_rate": target_rate, "new_name": harm_name}
+                mappings[label] = {
+                    "new_rate": harmonization_sampling_rate,
+                    "new_name": harm_name,
+                }
     return mappings
 
 

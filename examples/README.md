@@ -35,13 +35,13 @@ Wide CSV (one row per record) ──► Sleep Record JSON (JavaScript Object Not
 
 ## Step 1 — Harmonize biosignals in European Data Format (EDF) files (schema-driven)
 
-Channel mappings and **harmonization target rates (Hz)** are loaded from [`Biosignal_schema.xlsx`](../harmonized/Biosignal_schema.xlsx). For each cohort column (e.g. `ABC`), original EDF labels map to harmonized names; comma-separated labels in a cell are alternate names for the same signal.
+Channel mappings and **harmonization sampling rates (Hz)** are loaded from [`Biosignal_schema.xlsx`](../harmonized/Biosignal_schema.xlsx). For each cohort column (e.g. `ABC`), original EDF labels map to harmonized names; comma-separated labels in a cell are alternate names for the same signal.
 
 The script:
 
 1. Reads your PSG EDF
 2. Renames mapped channels to harmonized names
-3. Resamples to the harmonization target rate from the schema
+3. Resamples each channel to its harmonization sampling rate from the schema
 4. Writes a **new EDF containing schema-mapped channels only** (unmapped channels are dropped)
 
 ### Single file
@@ -158,7 +158,7 @@ Cohort-specific cleaning beyond this template is **your responsibility** (the pu
 
 | File | Role |
 |------|------|
-| [`../harmonized/Biosignal_schema.xlsx`](../harmonized/Biosignal_schema.xlsx) | **Required for biosignal harmonize** — channel labels and harmonization target rates |
+| [`../harmonized/Biosignal_schema.xlsx`](../harmonized/Biosignal_schema.xlsx) | **Required for biosignal harmonize** — channel labels and harmonization sampling rates |
 | [`../harmonized/Sleep_schema.xlsx`](../harmonized/Sleep_schema.xlsx) | **Required for tabular harmonize** — sleep parameter name mapping |
 | [`../harmonized/Demographic_schema.xlsx`](../harmonized/Demographic_schema.xlsx) | Documentation of harmonized demographic fields |
 | [`config/datasets.yaml`](config/datasets.yaml) | **Required for tabular harmonize** — which CSV columns hold demographics / `edf_path` per cohort |

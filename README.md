@@ -30,7 +30,7 @@ Researchers developing sleep analysis algorithms (e.g., sleep stage classificati
 1. **Define inputs and outputs** — Select input biosignals and output sleep parameters for your task.
 2. **Check harmonized names** — Use the description workbooks ([biosignal](./harmonized/Biosignals_description.xlsx), [sleep analysis parameter](./harmonized/Sleep_description.xlsx), [demographic](./harmonized/Demographic_description.xlsx)).
 3. **Map to dataset-specific labels** — Use the mapping workbooks ([biosignal](./harmonized/Biosignal_schema.xlsx), [sleep analysis parameter](./harmonized/Sleep_schema.xlsx), [demographic](./harmonized/Demographic_schema.xlsx)).
-4. **Harmonize data and build a pipeline** — Align channel names and harmonization target rates, then construct preprocessing (see [examples](./examples/README.md)).
+4. **Harmonize data and build a pipeline** — Align channel names and harmonization sampling rates, then construct preprocessing (see [examples](./examples/README.md)).
 
 ![Application Overview](./images/userguide_overview.svg)
 
@@ -52,7 +52,7 @@ Open PSG **EDFs and CSVs are not included**. Tabular harmonization writes Sleep 
 
 ## Harmonization example (biosignals)
 
-Applies to all eight schema cohorts. Channel mappings and **harmonization target rates** are read from [`Biosignal_schema.xlsx`](./harmonized/Biosignal_schema.xlsx). The script renames channels, resamples to the target rate, and writes a new EDF with **schema-mapped channels only**.
+Applies to all eight schema cohorts. Channel mappings and **harmonization sampling rates** are read from [`Biosignal_schema.xlsx`](./harmonized/Biosignal_schema.xlsx). The script renames channels, resamples each channel to its harmonization sampling rate, and writes a new EDF with **schema-mapped channels only**.
 
 Run from the repository root. Download PSG EDF files from NSRR (not included here), then run:
 
@@ -105,11 +105,11 @@ The schema and mapping examples reflect the files available at those access date
 
 ## 1. Biosignal Schema
 
-The harmonized biosignal schema defines the classification (type), harmonized name, and harmonization target rate for a total of 59 biosignals.
+The harmonized biosignal schema defines the classification (type), harmonized name, and harmonization sampling rate for a total of 59 biosignals.
 
 Example:
 
-| Type | Harmonized Name | Harmonization target rate (Hz) | ABC | APPLE | CFS | MESA | MrOS | SHHS | SOF | WSC |
+| Type | Harmonized Name | Harmonization sampling rate (Hz) | ABC | APPLE | CFS | MESA | MrOS | SHHS | SOF | WSC |
 |------|-----------------|----------------------|-----|-------|-----|------|------|------|-----|-----|
 | EEG  | eeg_c3          | 100                  | C3  | –     | C3  | –    | C3   | –    | C3  | –   |
 | EOG  | eog_loc         | 128                  | E1  | LOC   | LOC | EOG-L| LOC, E1 | EOG(L) | LOC | E1 |

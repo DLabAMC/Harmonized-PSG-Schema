@@ -3,7 +3,7 @@
 Harmonize biosignals in a polysomnography (PSG) European Data Format (EDF) file.
 
 Loads channel mappings from harmonized/Biosignal_schema.xlsx, renames labels to
-harmonized names, resamples to harmonization target rates, and writes a new EDF
+harmonized names, resamples to harmonization sampling rates, and writes a new EDF
 containing schema-mapped channels only.
 
 Usage (single file, from repository root):
@@ -59,7 +59,7 @@ def _harmonize_one(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Harmonize biosignals in a PSG EDF (rename + target-rate resampling)"
+        description="Harmonize biosignals in a PSG EDF (rename + resample to harmonization sampling rates)"
     )
     parser.add_argument(
         "--dataset",

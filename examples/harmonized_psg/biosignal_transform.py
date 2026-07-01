@@ -1,4 +1,4 @@
-"""EDF biosignal harmonization: rename, resample to target rate, write schema channels only."""
+"""EDF biosignal harmonization: rename, resample to harmonization sampling rate, write schema channels only."""
 
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ def channel_transform_record(
     original_label: str,
     original_rate_hz: int,
     harmonized_name: str,
-    target_rate_hz: int,
+    harmonization_sampling_rate_hz: int,
     *,
     mapped: bool = True,
 ) -> dict[str, Any]:
@@ -32,7 +32,7 @@ def channel_transform_record(
         "original_label": original_label,
         "original_sample_rate_hz": original_rate_hz,
         "harmonized_name": harmonized_name,
-        "harmonization_target_rate_hz": target_rate_hz,
+        "harmonization_sampling_rate_hz": harmonization_sampling_rate_hz,
         "mapped": mapped,
     }
 
